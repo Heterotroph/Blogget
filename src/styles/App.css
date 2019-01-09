@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+.main-header {
+  padding: 10px 0px;
+  background-color: #333333;
+}
+
+video.logo {
+  transform: scale(0.5);
+}
