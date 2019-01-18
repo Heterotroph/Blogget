@@ -8,5 +8,5 @@
 }
 
 video.logo {
-  transform: scale(0.5);
+  zoom: 0.5;
 }
