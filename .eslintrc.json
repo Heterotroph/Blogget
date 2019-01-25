@@ -1,5 +1,5 @@
 {
   "rules": {
-      "no-unused-vars": ["warning", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+      "no-unused-vars": ["info", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
   }
 }
