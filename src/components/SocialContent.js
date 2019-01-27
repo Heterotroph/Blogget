@@ -4,7 +4,11 @@ import Table from './table';
 const SocialContent = props =>
     <section>
         <main>
-            <Table data={props.data} requestStatistics={props.requestStatistics} />
+            <Table
+              data={props.statistics}
+              serviceKey={props.serviceKey}
+              requestStatistics={props.requestStatistics}
+            />
         </main>
     </section>
 

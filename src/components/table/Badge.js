@@ -5,9 +5,9 @@ const Badge = props => {
   const {picture, title, categories} = props;
   return (
     <Header as='h4' image>
-      <Image src={ props.picture } rounded size='mini' />
+      <Image src={ picture } rounded size='mini' />
       <Header.Content>
-        { props.title }
+        { title }
         <Header.Subheader>Music, Music_of_Asia</Header.Subheader>
       </Header.Content>
     </Header>

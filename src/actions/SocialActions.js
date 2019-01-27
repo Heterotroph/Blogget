@@ -1,6 +1,6 @@
-export const SOCIAL_DATA_REQUEST = "DATA_REQUEST";
-export const SOCIAL_DATA_SUCCESS = "DATA_SUCCESS";
-export const SOCIAL_DATA_FAIL = "DATA_FAIL";
+export const SOCIAL_DATA_REQUEST = "SOCIAL_DATA_REQUEST";
+export const SOCIAL_DATA_SUCCESS = "SOCIAL_DATA_SUCCESS";
+export const SOCIAL_DATA_FAIL = "SOCIAL_DATA_FAIL";
 
 export const SERVICE_YOUTUBE = "youtube";
 
