@@ -19,10 +19,10 @@ export function socialReducer(state = initialState, action) {
             return { ...state }
 
         case SOCIAL_DATA_SUCCESS:
-            return { ...state }
+            return { ...state, statistics: action.statistics }
 
         case SOCIAL_DATA_FAIL:
-            return { ...state }
+            return { ...state,  }
 
         default:
             return state

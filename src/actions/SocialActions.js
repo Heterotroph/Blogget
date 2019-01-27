@@ -1,38 +1,51 @@
-export const SOCIAL_DATA_REQUEST = 'DATA_REQUEST';
-export const SOCIAL_DATA_SUCCESS = 'DATA_SUCCESS';
-export const SOCIAL_DATA_FAIL = 'DATA_FAIL';
+export const SOCIAL_DATA_REQUEST = "DATA_REQUEST";
+export const SOCIAL_DATA_SUCCESS = "DATA_SUCCESS";
+export const SOCIAL_DATA_FAIL = "DATA_FAIL";
 
-export const SERVICE_YOUTUBE = 'youtube';
+export const SERVICE_YOUTUBE = "youtube";
 
 export const servicesMap = {
   [SERVICE_YOUTUBE]: {
     statistics: requestYoutubeStatistics,
     special: requestYoutubeSpecial
   }
-}
+};
 
 export function requestStatisticsAction(serviceKey, extra) {
-  console.log('requestStatisticsAction ' + serviceKey + ' ' + extra);
   return function(dispatch) {
-    console.log('requestStatisticsAction#anonimus ' + serviceKey + ' ' + extra);
     dispatch({ type: SOCIAL_DATA_REQUEST });
-    servicesMap[serviceKey].statistics();
-  }
+    servicesMap[serviceKey].statistics(dispatch, extra);
+  };
 }
 
 export function requestSpecialAction(serviceKey) {
-  console.log('requestSpecialAction ' + serviceKey);
   return function(dispatch) {
-    console.log('requestSpecialAction#anonimus ' + serviceKey);
     dispatch({ type: SOCIAL_DATA_REQUEST });
-    servicesMap[serviceKey].special();
-  }
+    servicesMap[serviceKey].special(dispatch);
+  };
 }
 
-function requestYoutubeStatistics() {
-    
+function requestYoutubeStatistics(dispatch, extra) {
+  const { page = 1 } = extra;
+  fetch(`http://92.53.65.165:8000/channels/?page=${page}`)
+    .then(response => {
+      if (response.status !== 200) {
+        dispatch({
+          type: SOCIAL_DATA_FAIL,
+        })
+        return;
+      }
+      response.json().then(data => {
+        dispatch({
+          type: SOCIAL_DATA_SUCCESS,
+          statistics: data
+        });
+      });
+    })
+    .catch(err => dispatch({
+      type: SOCIAL_DATA_FAIL,
+      error: err
+    }));
 }
 
-function requestYoutubeSpecial() {
-    
-}
+function requestYoutubeSpecial(dispatch) {}

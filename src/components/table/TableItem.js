@@ -10,10 +10,10 @@ export default class TableItem extends Component {
   render() {
     return (
       <Table.Row>
-        <Table.Cell><Badge /></Table.Cell>
-        <Table.Cell>22</Table.Cell>
-        <Table.Cell>15</Table.Cell>
-        <Table.Cell>15</Table.Cell>
+        <Table.Cell><Badge {...this.props}/></Table.Cell>
+        <Table.Cell>{this.props.views}</Table.Cell>
+        <Table.Cell>{this.props.videos}</Table.Cell>
+        <Table.Cell>{this.props.subscribers}</Table.Cell>
         <Table.Cell>
           10
           <Label color='red' size='mini' horizontal>

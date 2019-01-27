@@ -1,10 +1,10 @@
 import React from 'react';
-import Table from '../components/table';
+import Table from './table';
 
 const SocialContent = props =>
     <section>
         <main>
-            <Table />
+            <Table data={props.data} requestStatistics={props.requestStatistics} />
         </main>
     </section>
 

@@ -7,7 +7,7 @@ import {
 } from '../actions/SocialActions';
 
 import Header from '../components/Header';
-import SocialContent from './SocialContent';
+import SocialContent from '../components/SocialContent';
 
 class App extends Component {
   render() {
@@ -16,9 +16,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Header serviceKey={serviceKey} />
-        <SocialContent data={social} />
-        <button onClick={() => requestStatistics('youtube', {page: 1})} />
-        <button onClick={() => requestSpecial('youtube')} />
+        <SocialContent data={social.statistics} requestStatistics={requestStatistics} />
         <aside>aside</aside>
         <footer>footer</footer>
       </div>

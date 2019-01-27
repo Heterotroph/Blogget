@@ -4,6 +4,10 @@ import TableItem from './TableItem';
 
 class AccTable extends Component {
   render() {
+    const { requestStatistics } = this.props;
+    if (!this.props.data) return <button onClick={() => requestStatistics('youtube', {page: 1})}>error</button>
+    const { results } = this.props.data;
+    const body = results.map(item => <TableItem key={item.id} {...item} />);
     return (
       <Table basic='very' celled  >
 
@@ -20,8 +24,7 @@ class AccTable extends Component {
         </Table.Header>
 
         <Table.Body>
-          <TableItem />
-          <TableItem />
+          {body}
         </Table.Body>
 
         <Table.Footer>
