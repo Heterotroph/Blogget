@@ -1,19 +1,29 @@
-import React from 'react';
-import Table from './table';
-import { Sticky } from 'semantic-ui-react';
+import React, { Component } from "react";
+import Table from "./table";
+import { Sticky } from "semantic-ui-react";
 
-const SocialContent = props => (
-  <section className={'content'}>
-    <main>
-      <Table
-        view={props.view}
-        data={props.statistics}
-        serviceKey={props.serviceKey}
-        requestStatistics={props.requestStatistics}
-      />
-    </main>
-    <aside><Sticky>aside</Sticky></aside>
-  </section>
-);
+export default class SocialContent extends Component {
+  state = {};
 
-export default SocialContent;
+  handleContextRef = contextRef => this.setState({ contextRef });
+
+  render() {
+    const { contextRef } = this.state;
+    const { view, statistics, serviceKey, requestStatistics } = this.props;
+    return (
+      <section className={"content"} ref={this.handleContextRef}>
+        <main>
+          <Table
+            view={view}
+            data={statistics}
+            serviceKey={serviceKey}
+            requestStatistics={requestStatistics}
+          />
+        </main>
+        <aside>
+          <Sticky context={contextRef}>ASIDE</Sticky>
+        </aside>
+      </section>
+    );
+  }
+}

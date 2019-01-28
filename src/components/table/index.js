@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Pagination, Sticky } from 'semantic-ui-react';
+import { Table, Pagination, Sticky, Rail } from 'semantic-ui-react';
 import TableItem from './TableItem';
 
 const HARDCODE_LIMIT = 50;
@@ -8,6 +8,7 @@ class AccTable extends Component {
   state = {
     isLoading: true
   };
+  handleContextRef = contextRef => this.setState({ contextRef });
   componentWillReceiveProps(props) {}
   render() {
     const { data, view } = this.props;
@@ -27,18 +28,20 @@ class AccTable extends Component {
     return (
       <React.Fragment>
         <p>{view.page + '->' + view.pageRequested}</p>
-        <div>
-          <Sticky>{pagination}</Sticky>
-          <Table basic='very' celled>
+        <div ref={this.handleContextRef}>
+          <Sticky offset={10} context={this.state.contextRef} style={{float: 'left', 'margin': '11px 11px'}}>
+            {pagination}
+          </Sticky>
+          <Table basic='very' fixed selectable sortable >
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell />
-                <Table.HeaderCell>videos</Table.HeaderCell>
-                <Table.HeaderCell>per month</Table.HeaderCell>
-                <Table.HeaderCell>views</Table.HeaderCell>
-                <Table.HeaderCell>per month</Table.HeaderCell>
-                <Table.HeaderCell>subscribers</Table.HeaderCell>
-                <Table.HeaderCell>per month</Table.HeaderCell>
+                <Table.HeaderCell singleLine width={15}/>
+                <Table.HeaderCell singleLine width={4} textAlign='right'>videos</Table.HeaderCell>
+                <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
+                <Table.HeaderCell singleLine width={4} textAlign='right'>views</Table.HeaderCell>
+                <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
+                <Table.HeaderCell singleLine width={4} textAlign='right'>subscribers</Table.HeaderCell>
+                <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 

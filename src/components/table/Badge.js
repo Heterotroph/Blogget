@@ -1,18 +1,23 @@
-import React from 'react';
-import { Header, Image } from 'semantic-ui-react'
+import React from "react";
+import { Header, Image, Label } from "semantic-ui-react";
 
 const Badge = props => {
-  const {picture, title, categories} = props;
-  const totalCategories = categories.map(item => item.name).join(', ');
+  const { picture, title, categories, country } = props;
+  const totalCategories = categories.map(item => item.name).join(", ");
   return (
-    <Header as='h4' image>
-      <Image src={ picture } rounded size='mini' />
+    <Header as="h4" image>  
+      <Image src={picture} rounded size="tiny" />
       <Header.Content>
-        { title }
-        <Header.Subheader>{ totalCategories }</Header.Subheader>
+        <em className="ellipsis badge-title">{title}</em>
+        <Label size="mini" as="a">
+          {country || "OTHER"}
+        </Label>
+        <Header.Subheader className="ellipsis badge-categories">
+          {totalCategories}
+        </Header.Subheader>
       </Header.Content>
     </Header>
-  )
-}
+  );
+};
 
 export default Badge;

@@ -15,3 +15,27 @@ video.logo {
   display: flex;
   flex-direction: row;
 }
+
+main {
+  box-sizing: border-box;
+  max-width: 1000px;
+  width: 100%;
+  min-width: 800px;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+}
+
+.badge-title {
+  display: inline-block;
+  max-width: 200px;
+  margin: -5px 0px;
+  padding: 0px;
+}
+
+.badge-categories {
+  max-width: 230px;
+}

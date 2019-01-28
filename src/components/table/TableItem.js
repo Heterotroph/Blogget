@@ -8,21 +8,28 @@ export default class TableItem extends Component {
   }
 
   render() {
+    const {videos, views, subscribers} = this.props;
     return (
       <Table.Row>
         <Table.Cell><Badge {...this.props}/></Table.Cell>
-        <Table.Cell>{this.props.videos}</Table.Cell>
-        <Table.Cell></Table.Cell>
-        <Table.Cell>{this.props.views}</Table.Cell>
-        <Table.Cell>
-          0
-          {/*<Label color='red' size='mini' horizontal>
-          0%
-          </Label>*/}
-        </Table.Cell>
-        <Table.Cell>{this.props.subscribers}</Table.Cell>
-        <Table.Cell>0</Table.Cell>
+        <Table.Cell textAlign='right'>{this.format(videos)}</Table.Cell>
+        <Table.Cell textAlign='right'></Table.Cell>
+        <Table.Cell textAlign='right'>{this.format(views)}</Table.Cell>
+        <Table.Cell textAlign='right'>0</Table.Cell>
+        <Table.Cell textAlign='right'>{this.format(subscribers)}</Table.Cell>
+        <Table.Cell textAlign='right'>0</Table.Cell>
       </Table.Row>
     );
+  }
+
+  format(value) {
+    if (value < 10000) return value;
+    let current = value;
+    let postfix = '';
+    while (current > 999) {
+      current /= 1000
+      postfix += 'k';
+    }
+    return current.toFixed(current > 100 ? 0 : 1) + postfix;
   }
 }
