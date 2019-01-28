@@ -1,71 +1,56 @@
-import React, { Component } from "react";
-import { Table } from "semantic-ui-react";
-import TableItem from "./TableItem";
-import Pagination from "./Pagination";
+import React, { Component } from 'react';
+import { Table, Pagination, Sticky } from 'semantic-ui-react';
+import TableItem from './TableItem';
+
+const HARDCODE_LIMIT = 50;
 
 class AccTable extends Component {
+  state = {
+    isLoading: true
+  };
+  componentWillReceiveProps(props) {}
   render() {
-    const { results, next, previous, count } = this.props.data;
-    const currentPage = this.getCurrentPage(
-      previous,
-      next,
-      count,
-      results.length
-    );
+    const { data, view } = this.props;
+    const { results, count } = data;
+    const totalPages = Math.ceil(count / HARDCODE_LIMIT);
     const body = results.map(item => <TableItem key={item.id} {...item} />);
+    const pagination = (
+      <Pagination
+        activePage={view.page}
+        totalPages={totalPages}
+        firstItem={null}
+        lastItem={null}
+        size='mini'
+        onPageChange={this.onPageChange.bind(this)}
+      />
+    );
     return (
-      <Table basic="very" celled>
-        <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell colSpan="7">
-            <Pagination
-              first={1}
-              current={currentPage}
-              last={Math.ceil(count / results.length)}
-              onPageChanged={this.onPageChanged.bind(this)}
-            />
-          </Table.HeaderCell>
-        </Table.Row>
-          <Table.Row>
-            <Table.HeaderCell />
-            <Table.HeaderCell>videos</Table.HeaderCell>
-            <Table.HeaderCell>per month</Table.HeaderCell>
-            <Table.HeaderCell>views</Table.HeaderCell>
-            <Table.HeaderCell>per month</Table.HeaderCell>
-            <Table.HeaderCell>subscribers</Table.HeaderCell>
-            <Table.HeaderCell>per month</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <React.Fragment>
+        <p>{view.page + '->' + view.pageRequested}</p>
+        <div>
+          <Sticky>{pagination}</Sticky>
+          <Table basic='very' celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell />
+                <Table.HeaderCell>videos</Table.HeaderCell>
+                <Table.HeaderCell>per month</Table.HeaderCell>
+                <Table.HeaderCell>views</Table.HeaderCell>
+                <Table.HeaderCell>per month</Table.HeaderCell>
+                <Table.HeaderCell>subscribers</Table.HeaderCell>
+                <Table.HeaderCell>per month</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
 
-        <Table.Body>{body}</Table.Body>
-
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell colSpan="7">
-              <Pagination
-                first={1}
-                current={currentPage}
-                last={Math.ceil(count / results.length)}
-                onPageChanged={this.onPageChanged.bind(this)}
-              />
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
+            <Table.Body>{body}</Table.Body>
+          </Table>
+        </div>
+      </React.Fragment>
     );
   }
-  onPageChanged(page) {
+  onPageChange(e, { activePage }) {
     const { requestStatistics, serviceKey } = this.props;
-    requestStatistics(serviceKey, { page: page });
-  }
-  getCurrentPage(prev, next, count, length) {
-    if (!prev) {
-      return 1;
-    } else if (!next) {
-      return Math.ceil(count / length);
-    } else {
-      return Math.max(new URL(next).searchParams.get("page") - 1, 1);
-    }
+    requestStatistics(serviceKey, { page: activePage });
   }
 }
 

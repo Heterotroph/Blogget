@@ -10,3 +10,8 @@
 video.logo {
   zoom: 0.5;
 }
+
+.content {
+  display: flex;
+  flex-direction: row;
+}

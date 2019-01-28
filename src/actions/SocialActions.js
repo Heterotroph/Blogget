@@ -1,8 +1,8 @@
-export const SOCIAL_DATA_REQUEST = "SOCIAL_DATA_REQUEST";
-export const SOCIAL_DATA_SUCCESS = "SOCIAL_DATA_SUCCESS";
-export const SOCIAL_DATA_FAIL = "SOCIAL_DATA_FAIL";
+export const SOCIAL_DATA_REQUEST = 'SOCIAL_DATA_REQUEST';
+export const SOCIAL_DATA_SUCCESS = 'SOCIAL_DATA_SUCCESS';
+export const SOCIAL_DATA_FAIL = 'SOCIAL_DATA_FAIL';
 
-export const SERVICE_YOUTUBE = "youtube";
+export const SERVICE_YOUTUBE = 'youtube';
 
 export const servicesMap = {
   [SERVICE_YOUTUBE]: {
@@ -13,14 +13,17 @@ export const servicesMap = {
 
 export function requestStatisticsAction(serviceKey, extra) {
   return function(dispatch) {
-    dispatch({ type: SOCIAL_DATA_REQUEST });
+    dispatch({
+      type: SOCIAL_DATA_REQUEST,
+      view: { pageRequested: extra.page }
+    });
     servicesMap[serviceKey].statistics(dispatch, extra);
   };
 }
 
 export function requestSpecialAction(serviceKey) {
   return function(dispatch) {
-    dispatch({ type: SOCIAL_DATA_REQUEST });
+    dispatch({type: SOCIAL_DATA_REQUEST });
     servicesMap[serviceKey].special(dispatch);
   };
 }
@@ -38,7 +41,8 @@ function requestYoutubeStatistics(dispatch, extra) {
       response.json().then(data => {
         dispatch({
           type: SOCIAL_DATA_SUCCESS,
-          statistics: data
+          statistics: data,
+          view: { page: page }
         });
       });
     })
