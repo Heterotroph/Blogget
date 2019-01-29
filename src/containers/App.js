@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import {
   requestStatisticsAction,
   requestSpecialAction
-} from '../actions/SocialActions';
+} from "../actions/SocialActions";
 
-import Header from '../components/Header';
-import SocialContent from '../components/SocialContent';
+import { changeAsideModeAction } from "../actions/ViewActions";
+
+import Header from "../components/Header";
+import SocialContent from "../components/SocialContent";
 
 class App extends Component {
   componentDidMount() {
@@ -17,32 +19,41 @@ class App extends Component {
     //requestSpecial(serviceKey);
   }
   render() {
-    const { social, requestStatistics, requestSpecial } = this.props;
+    const {
+      social,
+      view,
+      requestStatistics,
+      changeAsideMode
+    } = this.props;
     const { serviceKey } = social;
     const isLoading = Boolean(social.statistics);
     return (
-      <div className='App'>
+      <div className="App">
         <Header serviceKey={serviceKey} isLoading={isLoading} />
         {isLoading && (
           <SocialContent
-            view={social.view}
+            view={view}
             serviceKey={serviceKey}
             statistics={social.statistics}
+            changeAsideMode={changeAsideMode}
             requestStatistics={requestStatistics}
           />
         )}
-        <footer>footer</footer>
+        <footer></footer>
       </div>
     );
   }
 }
 
-const mapStateToProps = store => ({ social: store.social });
+const mapStateToProps = store => ({ social: store.social, view: store.view });
 
 const mapDispatchToProps = dispatch => ({
+  // -----------------
   requestStatistics: (serviceKey, extra) =>
     dispatch(requestStatisticsAction(serviceKey, extra)),
-  requestSpecial: serviceKey => dispatch(requestSpecialAction(serviceKey))
+  requestSpecial: serviceKey => dispatch(requestSpecialAction(serviceKey)),
+  // -----------------
+  changeAsideMode: (mode, extra) => dispatch(changeAsideModeAction(mode, extra))
 });
 
 export default connect(

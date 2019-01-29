@@ -1,5 +1,9 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
+  min-height: 100vh;
 }
 
 .main-header {
@@ -7,11 +11,17 @@
   background-color: #333333;
 }
 
+footer {
+  margin: 22px 0px 0px 0px;
+  padding: 50px 0px;
+  background-color: #333333;
+}
+
 video.logo {
   zoom: 0.5;
 }
 
-.content {
+.flex-row-center {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -25,7 +35,7 @@ main {
 }
 
 aside {
-  width: 240px;
+  width: 300px;
   margin: 11px 0px 0px 11px;
 }
 
