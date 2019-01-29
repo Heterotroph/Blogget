@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { Component } from "react";
 
-const BloggetLogo = () =>
-  <video className='logo' name='media' controls={false} autoPlay muted loop>
-    <source src='./logo/logo_grey.webm' type='video/webm' />
-    <source src='./logo/logo_grey.mp4' type='video/mp4' />
-  </video>
+export default class BloggetLogo extends Component {
+  state = {};
 
-export default BloggetLogo;
+  constructor(props) {
+    super(props);
+    this.videoRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.videoRef.current.addEventListener(
+      "loadeddata",
+      this.loadeddataHandler
+    );
+  }
+
+  componentWillUnmount() {
+    this.videoRef.current.removeEventListener(
+      "loadeddata",
+      this.loadeddataHandler
+    );
+  }
+
+  loadeddataHandler = event => {
+    const logoWidth = this.videoRef.current.clientWidth / 2;
+    const logoHeight = this.videoRef.current.clientHeight / 2;
+    this.setState({ logoWidth, logoHeight, logoOpacity: 1 });
+  };
+
+  render() {
+    return (
+      <video
+        style={{
+          width: this.state.logoWidth,
+          height: this.state.logoHeight,
+          opacity: this.state.logoOpacity || 0
+        }}
+        ref={this.videoRef}
+        name="media"
+        controls={false}
+        autoPlay
+        muted
+        loop
+      >
+        <source src="./logo/logo_grey.webm" type="video/webm" />
+        <source src="./logo/logo_grey.mp4" type="video/mp4" />
+      </video>
+    );
+  }
+}

@@ -8,18 +8,15 @@
 
 .main-header {
   padding: 10px 0px;
-  background-color: #333333;
+  background-color: #373737;
 }
 
 footer {
   margin: 22px 0px 0px 0px;
   padding: 50px 0px;
-  background-color: #333333;
+  background-color: #373737;
 }
 
-video.logo {
-  zoom: 0.5;
-}
 
 .flex-row-center {
   display: flex;

@@ -17,8 +17,6 @@ export default class SocialContent extends Component {
       changeAsideMode,
       requestStatistics
     } = this.props;
-    console.log('view.aside')
-    console.log(view.aside)
     return (
       <div className={"flex-row-center"} ref={this.handleContextRef}>
         <main>
