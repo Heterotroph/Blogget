@@ -36,11 +36,11 @@ class AccTable extends Component {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell singleLine width={15}/>
-                <Table.HeaderCell singleLine width={4} textAlign='right'>videos</Table.HeaderCell>
-                <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
                 <Table.HeaderCell singleLine width={4} textAlign='right'>views</Table.HeaderCell>
                 <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
                 <Table.HeaderCell singleLine width={4} textAlign='right'>subscribers</Table.HeaderCell>
+                <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
+                <Table.HeaderCell singleLine width={4} textAlign='right'>videos</Table.HeaderCell>
                 <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
               </Table.Row>
             </Table.Header>

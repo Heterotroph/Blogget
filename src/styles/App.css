@@ -14,13 +14,19 @@ video.logo {
 .content {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 main {
   box-sizing: border-box;
-  max-width: 1000px;
-  width: 100%;
+  max-width: 800px;
   min-width: 800px;
+  width: 100%;
+}
+
+aside {
+  width: 240px;
+  margin: 11px 0px 0px 11px;
 }
 
 .ellipsis {
@@ -31,11 +37,16 @@ main {
 
 .badge-title {
   display: inline-block;
-  max-width: 200px;
+  cursor: pointer;
+  max-width: 190px;
   margin: -5px 0px;
   padding: 0px;
 }
 
 .badge-categories {
-  max-width: 230px;
+  max-width: 245px;
+}
+
+.badge-img {
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Table from "./table";
-import { Sticky } from "semantic-ui-react";
+import { Sticky, Segment } from "semantic-ui-react";
 
 export default class SocialContent extends Component {
   state = {};
@@ -11,7 +11,7 @@ export default class SocialContent extends Component {
     const { contextRef } = this.state;
     const { view, statistics, serviceKey, requestStatistics } = this.props;
     return (
-      <section className={"content"} ref={this.handleContextRef}>
+      <div className={"content"} ref={this.handleContextRef}>
         <main>
           <Table
             view={view}
@@ -21,9 +21,13 @@ export default class SocialContent extends Component {
           />
         </main>
         <aside>
-          <Sticky context={contextRef}>ASIDE</Sticky>
+          <Sticky context={contextRef}>
+            <Segment className='aside-segment'>
+
+            </Segment>
+          </Sticky>
         </aside>
-      </section>
+      </div>
     );
   }
 }

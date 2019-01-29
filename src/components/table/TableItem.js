@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Table, Label, Segment } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 import Badge from './Badge';
+import { complexFormat } from '../../utils';
 
 export default class TableItem extends Component {
   constructor(props) {
@@ -8,28 +9,35 @@ export default class TableItem extends Component {
   }
 
   render() {
-    const {videos, views, subscribers} = this.props;
+    const {videos, views, subscribers, yt_id} = this.props;
+    const fViews = complexFormat(views);
+    const fSubs = complexFormat(subscribers);
+    const fVideos = complexFormat(videos);
+    console.log(fVideos)
     return (
       <Table.Row>
-        <Table.Cell><Badge {...this.props}/></Table.Cell>
-        <Table.Cell textAlign='right'>{this.format(videos)}</Table.Cell>
-        <Table.Cell textAlign='right'></Table.Cell>
-        <Table.Cell textAlign='right'>{this.format(views)}</Table.Cell>
-        <Table.Cell textAlign='right'>0</Table.Cell>
-        <Table.Cell textAlign='right'>{this.format(subscribers)}</Table.Cell>
-        <Table.Cell textAlign='right'>0</Table.Cell>
+        <Table.Cell onClick={e => {console.log(yt_id)}}>
+          <Badge {...this.props}/>
+        </Table.Cell>
+        <Table.Cell textAlign='right'>
+          <strong>{fViews.int}</strong>
+          {fViews.frac}
+          {fViews.abbr}
+        </Table.Cell>
+        <Table.Cell textAlign='right'>+0</Table.Cell>
+        <Table.Cell textAlign='right'>
+          <strong>{fSubs.int}</strong>
+          {fSubs.frac}
+          {fSubs.abbr}
+        </Table.Cell>
+        <Table.Cell textAlign='right'>+0</Table.Cell>
+        <Table.Cell textAlign='right'>
+          <strong>{fVideos.int}</strong>
+          {fVideos.frac}
+          {fVideos.abbr}
+        </Table.Cell>
+        <Table.Cell textAlign='right'>+0</Table.Cell>
       </Table.Row>
     );
-  }
-
-  format(value) {
-    if (value < 10000) return value;
-    let current = value;
-    let postfix = '';
-    while (current > 999) {
-      current /= 1000
-      postfix += 'k';
-    }
-    return current.toFixed(current > 100 ? 0 : 1) + postfix;
   }
 }

@@ -6,7 +6,7 @@ const Badge = props => {
   const totalCategories = categories.map(item => item.name).join(", ");
   return (
     <Header as="h4" image>  
-      <Image src={picture} rounded size="tiny" />
+      <Image src={picture} className='badge-img' rounded size="tiny" />
       <Header.Content>
         <em className="ellipsis badge-title">{title}</em>
         <Label size="mini" as="a">
