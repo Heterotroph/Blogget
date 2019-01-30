@@ -13,7 +13,7 @@ build:
   - npm run build
   - rm -rf public
   - mv build public
-  - RSYNC_PASSWORD=1ad63bcc rsync -a public admin@92.53.77.8:html
+  - rsync -a public/  rsync://admin@92.53.77.8/html/
   artifacts:
     paths:
     - public # mandatory, other folder won't work
