@@ -39,7 +39,7 @@ class App extends Component {
             requestStatistics={requestStatistics}
           />
         )}
-        <footer></footer>
+        <footer>Zygin, Akhtyamov</footer>
       </div>
     );
   }
