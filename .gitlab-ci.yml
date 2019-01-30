@@ -7,6 +7,7 @@ build:
  
   stage: build
   script:
+  - apt install -y rsync
   - npm install
   - npm run build
   - rm -rf public
