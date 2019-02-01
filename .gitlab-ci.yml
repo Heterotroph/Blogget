@@ -4,6 +4,7 @@ before_script:
   cache:
     paths:
     - node_modules/
+  script:
   - apt update
   - apt install -y rsync
   - npm install
@@ -23,4 +24,5 @@ deploy:
     - public # mandatory, other folder won't work
     expire_in: 1 day
   stage: deploy
-    - rsync -r ./public/*  rsync://admin@92.53.77.8/html
+  script:
+  - rsync -r ./public/*  rsync://admin@92.53.77.8/html
