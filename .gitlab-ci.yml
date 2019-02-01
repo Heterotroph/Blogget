@@ -1,22 +1,29 @@
 image: node:10.12.0 # can be upgraded, depending on your node version used
- 
-build:
+
+before_script:
   cache:
     paths:
     - node_modules/
- 
-  stage: build
-  script:
   - apt update
   - apt install -y rsync
   - npm install
+ 
+build:
+  stage: build
+  script:
   - npm run build
   - rm -rf public
   - mv build public
-  - rsync -r ./public/*  rsync://admin@92.53.77.8/html
   artifacts:
     paths:
     - public # mandatory, other folder won't work
-    expire_in: 1 hour
+    expire_in: 1 day
   only:
   - master # or dev, the branch you want to publish
+
+deploy:
+  artifacts:
+      paths:
+      - public
+  stage: deploy
+    - rsync -r ./public/*  rsync://admin@92.53.77.8/html
