@@ -23,7 +23,7 @@ build:
 
 deploy:
   artifacts:
-      paths:
-      - public
+    paths:
+    - public
   stage: deploy
     - rsync -r ./public/*  rsync://admin@92.53.77.8/html
