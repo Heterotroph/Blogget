@@ -30,7 +30,7 @@ export function requestSpecialAction(serviceKey) {
 
 function requestYoutubeStatistics(dispatch, extra) {
   const { page = 1 } = extra;
-  fetch(`http://92.53.65.165:8000/channels/?page=${page}`)
+  fetch(`https://api.blogget.ru/channels/?page=${page}`)
     .then(response => {
       if (response.status !== 200) {
         dispatch({
