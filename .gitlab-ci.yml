@@ -20,6 +20,4 @@ deploy:
     expire_in: 1 day
   stage: deploy
   script:
-  - apt update
-  - apt install -y rsync
   - rsync -r ./public/*  rsync://admin@92.53.77.8/html
