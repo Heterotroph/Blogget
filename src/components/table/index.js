@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Table, Pagination, Sticky, Rail } from "semantic-ui-react";
 import TableItem from "./TableItem";
+import TableHeaderRow from './TableHeaderRow';
 
 const PAGES_HARDCODE_LIMIT = 50;
 
 class AccTable extends Component {
   state = { isLoading: true };
   handleContextRef = contextRef => this.setState({ contextRef });
-  componentWillReceiveProps(props) {}
   render() {
     const { data, view, changeAsideMode } = this.props;
     const { results, count } = data;
@@ -38,15 +38,7 @@ class AccTable extends Component {
           </Sticky>
           <Table basic="very" fixed selectable sortable>
             <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell singleLine width={15}/>
-                <Table.HeaderCell singleLine width={4} textAlign='right'>views</Table.HeaderCell>
-                <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
-                <Table.HeaderCell singleLine width={4} textAlign='right'>subscribers</Table.HeaderCell>
-                <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
-                <Table.HeaderCell singleLine width={4} textAlign='right'>videos</Table.HeaderCell>
-                <Table.HeaderCell singleLine width={4} textAlign='right'>per month</Table.HeaderCell>
-              </Table.Row>
+              <TableHeaderRow accSize={15} othSize={4} />
             </Table.Header>
 
             <Table.Body>{body}</Table.Body>

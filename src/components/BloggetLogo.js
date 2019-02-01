@@ -26,6 +26,10 @@ export default class BloggetLogo extends Component {
     const logoWidth = this.videoRef.current.clientWidth / 2;
     const logoHeight = this.videoRef.current.clientHeight / 2;
     this.setState({ logoWidth, logoHeight, logoOpacity: 1 });
+    this.videoRef.current.removeEventListener(
+      "loadeddata",
+      this.loadeddataHandler
+    );
   };
 
   render() {
