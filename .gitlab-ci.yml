@@ -13,6 +13,7 @@ build:
   - master # or dev, the branch you want to publish
 
 deploy:
+  image: eeacms/rsync
   artifacts:
     paths:
     - public # mandatory, other folder won't work
