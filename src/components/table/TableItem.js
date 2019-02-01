@@ -16,7 +16,7 @@ export default class TableItem extends Component {
           <Badge {...this.props}/>
         </Table.Cell>
         <Table.Cell textAlign='right'>{format(views)}</Table.Cell>
-        <Table.Cell textAlign='right'>+100500</Table.Cell>
+        <Table.Cell textAlign='right'>+1</Table.Cell>
         <Table.Cell textAlign='right'>{format(subscribers)}</Table.Cell>
         <Table.Cell textAlign='right'>+0</Table.Cell>
         <Table.Cell textAlign='right'>{format(videos)}</Table.Cell>
