@@ -1,13 +1,11 @@
 image: node:10.12.0 # can be upgraded, depending on your node version used
 
-before_script:
-  - apt update
-  - apt install -y rsync
-  - npm install
+
  
 build:
   stage: build
   script:
+  - npm install
   - npm run build
   - rm -rf public
   - mv build public
@@ -21,4 +19,6 @@ deploy:
     expire_in: 1 day
   stage: deploy
   script:
+  - apt update
+  - apt install -y rsync
   - rsync -r ./public/*  rsync://admin@92.53.77.8/html
