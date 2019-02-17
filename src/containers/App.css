@@ -17,7 +17,6 @@ footer {
   background-color: #3b3b3d;
 }
 
-
 .flex-row-center {
   display: flex;
   flex-direction: row;
@@ -34,26 +33,4 @@ main {
 aside {
   width: 300px;
   margin: 11px 0px 0px 11px;
-}
-
-.ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;  
-}
-
-.badge-title {
-  display: inline-block;
-  cursor: pointer;
-  max-width: 190px;
-  margin: -5px 0px;
-  padding: 0px;
-}
-
-.badge-categories {
-  max-width: 245px;
-}
-
-.badge-img {
-  cursor: pointer;
 }

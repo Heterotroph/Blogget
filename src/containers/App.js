@@ -11,6 +11,8 @@ import { changeAsideModeAction } from "../actions/ViewActions";
 import Header from "../components/Header";
 import SocialContent from "../components/SocialContent";
 
+import "./App.css";
+
 class App extends Component {
   componentDidMount() {
     const { social, requestStatistics, requestSpecial } = this.props;
@@ -19,12 +21,7 @@ class App extends Component {
     //requestSpecial(serviceKey);
   }
   render() {
-    const {
-      social,
-      view,
-      requestStatistics,
-      changeAsideMode
-    } = this.props;
+    const { social, view, requestStatistics, changeAsideMode } = this.props;
     const { serviceKey } = social;
     const isLoading = Boolean(social.statistics);
     return (
