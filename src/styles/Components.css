@@ -2,8 +2,13 @@
   cursor: pointer;
 }
 
-.ellipsis {
+.nowrap-ellipsis {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+}
+
+.ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;  
 }
@@ -22,4 +27,12 @@
 
 .badge-img {
   cursor: pointer;
+}
+
+em.positive {
+  color: green;
+}
+
+em.negative {
+  color: red;
 }

@@ -8,11 +8,11 @@ const Badge = props => {
     <Header as="h4" image>  
       <Image src={picture} className='badge-img' rounded size="tiny" />
       <Header.Content>
-        <em className="ellipsis badge-title">{title}</em>
+        <em className="nowrap-ellipsis badge-title">{title}</em>
         <Label size="mini" as="a">
           {country || "OTHER"}
         </Label>
-        <Header.Subheader className="ellipsis badge-categories">
+        <Header.Subheader className="nowrap-ellipsis badge-categories">
           {totalCategories}
         </Header.Subheader>
       </Header.Content>

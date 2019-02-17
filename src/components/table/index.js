@@ -3,8 +3,6 @@ import { Table, Pagination, Sticky } from "semantic-ui-react";
 import TableItem from "./TableItem";
 import TableHeaderRow from "./TableHeaderRow";
 
-import "./Table.css";
-
 const PAGES_HARDCODE_LIMIT = 50;
 
 class AccTable extends Component {
@@ -13,13 +11,14 @@ class AccTable extends Component {
   render() {
     const { data, view, changeAsideMode } = this.props;
     const { results, count } = data;
+    const yt_id = view.aside.extra && view.aside.extra.yt_id;
     const totalPages = Math.ceil(count / PAGES_HARDCODE_LIMIT);
     const body = results.map(item => (
-      <TableItem
+      <TableItem accSize={15} othSize={4}
         key={item.id}
         onClick={changeAsideMode}
+        active={yt_id == item.yt_id}
         {...item}
-        active={view.aside.extra.yt_id == item.yt_id}
       />
     ));
     const pagination = (

@@ -23,14 +23,14 @@ const AccCard = props => {
       <Card.Content>
         <Card.Header>
           {title}
-          {'\u00A0'}
+          {"\u00A0"}
           <a target="_blank" href={socialURL}>
-            <Icon name="external square alternate" link size='small'/>
+            <Icon name="external alternate" link size="small" />
           </a>
         </Card.Header>
         <Card.Meta>{totalCategories}</Card.Meta>
 
-        <Card.Description>{description}</Card.Description>
+        <Card.Description className="ellipsis">{description}</Card.Description>
       </Card.Content>
       {/*<Card.Content extra>
         <Icon name="user" />

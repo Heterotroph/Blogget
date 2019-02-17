@@ -11,7 +11,8 @@ import { changeAsideModeAction } from "../actions/ViewActions";
 import Header from "../components/Header";
 import SocialContent from "../components/SocialContent";
 
-import "./App.css";
+import "../styles/App.css";
+import "../styles/Components.css";
 
 class App extends Component {
   componentDidMount() {
