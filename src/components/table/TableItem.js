@@ -9,18 +9,17 @@ export default class TableItem extends Component {
   }
 
   render() {
-    const {videos, views, subscribers, onClick} = this.props;
     return (
       <Table.Row>
-        <Table.Cell onClick={e => {onClick('card', this.props)}}>
+        <Table.Cell onClick={e => {this.props.onClick('card', this.props)}}>  
           <Badge {...this.props}/>
         </Table.Cell>
-        <Table.Cell textAlign='right'>{format(views)}</Table.Cell>
-        <Table.Cell textAlign='right'>+1</Table.Cell>
-        <Table.Cell textAlign='right'>{format(subscribers)}</Table.Cell>
-        <Table.Cell textAlign='right'>+0</Table.Cell>
-        <Table.Cell textAlign='right'>{format(videos)}</Table.Cell>
-        <Table.Cell textAlign='right'>+0</Table.Cell>
+        <Table.Cell textAlign='right'>{format(this.props.views)}</Table.Cell>
+        <Table.Cell textAlign='right'>{format(this.props.views_delta_month)}</Table.Cell>
+        <Table.Cell textAlign='right'>{format(this.props.subscribers)}</Table.Cell>
+        <Table.Cell textAlign='right'>{format(this.props.subscribers_delta_month)}</Table.Cell>
+        <Table.Cell textAlign='right'>{format(this.props.videos)}</Table.Cell>
+        <Table.Cell textAlign='right'>{format(this.props.videos_delta_month)}</Table.Cell>
       </Table.Row>
     );
   }
