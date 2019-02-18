@@ -2,15 +2,27 @@
   cursor: pointer;
 }
 
+.table-header {
+  background-color: white;
+}
+
+.table-footer {
+  position: sticky;
+  bottom: 0px;
+  padding: 22px 0px;
+  background-color: #fff;
+  text-align: right;
+}
+
 .nowrap-ellipsis {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;  
+  text-overflow: ellipsis;
 }
 
 .ellipsis {
   overflow: hidden;
-  text-overflow: ellipsis;  
+  text-overflow: ellipsis;
 }
 
 .badge-title {

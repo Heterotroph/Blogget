@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Icon } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import Badge from "./Badge";
 import { format } from "../../utils";
 

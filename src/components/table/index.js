@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Table, Pagination, Sticky } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import TableItem from "./TableItem";
-import TableHeaderRow from "./TableHeaderRow";
+import TableHeader from "./TableHeader";
+import TableFooter from "./TableFooter";
 
 const PAGES_HARDCODE_LIMIT = 50;
 
@@ -14,41 +15,32 @@ class AccTable extends Component {
     const yt_id = view.aside.extra && view.aside.extra.yt_id;
     const totalPages = Math.ceil(count / PAGES_HARDCODE_LIMIT);
     const body = results.map(item => (
-      <TableItem accSize={15} othSize={4}
+      <TableItem
+        accSize={15}
+        othSize={4}
         key={item.id}
         onClick={changeAsideMode}
         active={yt_id == item.yt_id}
         {...item}
       />
     ));
-    const pagination = (
-      <Pagination
-        activePage={view.page}
-        totalPages={totalPages}
-        firstItem={null}
-        lastItem={null}
-        size="mini"
-        onPageChange={this.onPageChange.bind(this)}
-      />
-    );
     return (
       <React.Fragment>
         {/*<p>{view.page + "->" + view.pageRequested}</p>*/}
         <div ref={this.handleContextRef}>
-          <Sticky
-            offset={10}
+          <TableHeader
             context={this.state.contextRef}
-            style={{ float: "left", margin: "11px 11px" }}
-          >
-            {pagination}
-          </Sticky>
+            accSize={15}
+            othSize={4}
+          />
           <Table basic="very" fixed selectable sortable>
-            <Table.Header>
-              <TableHeaderRow accSize={15} othSize={4} />
-            </Table.Header>
-
             <Table.Body>{body}</Table.Body>
           </Table>
+          <TableFooter
+            activePage={view.page}
+            totalPages={totalPages}
+            onPageChange={this.onPageChange.bind(this)}
+          />
         </div>
       </React.Fragment>
     );
