@@ -12,7 +12,8 @@ import Header from "../components/Header";
 import SocialContent from "../components/SocialContent";
 
 import "../styles/App.css";
-import "../styles/Components.css";
+import "../styles/components.css";
+import "../styles/default.css";
 
 class App extends Component {
   componentDidMount() {

@@ -18,7 +18,7 @@ export default class SocialContent extends Component {
       requestStatistics
     } = this.props;
     return (
-      <div className={"flex-row-center"} ref={this.handleContextRef}>
+      <div className={["flex-row-center", "position-relative"].join(" ")} ref={this.handleContextRef}>
         <main>
           <Table
             view={view}
@@ -29,7 +29,7 @@ export default class SocialContent extends Component {
           />
         </main>
         <aside>
-          <Sticky offset={10} context={contextRef} style={{ margin: "11px 22px" }}>
+          <Sticky offset={50} context={contextRef}>
             {view.aside.mode == "card" && <Card {...view.aside.extra} />}
           </Sticky>
         </aside>

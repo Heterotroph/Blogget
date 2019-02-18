@@ -14,20 +14,8 @@
   text-align: right;
 }
 
-.nowrap-ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .badge-title {
   display: inline-block;
-  cursor: pointer;
   max-width: 190px;
   margin: -5px 0px;
   padding: 0px;
@@ -35,10 +23,6 @@
 
 .badge-categories {
   max-width: 245px;
-}
-
-.badge-img {
-  cursor: pointer;
 }
 
 em.positive {

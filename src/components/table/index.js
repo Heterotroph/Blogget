@@ -33,7 +33,7 @@ class AccTable extends Component {
             accSize={15}
             othSize={4}
           />
-          <Table basic="very" fixed selectable sortable>
+          <Table basic="very" unstackable fixed compact sortable>
             <Table.Body>{body}</Table.Body>
           </Table>
           <TableFooter

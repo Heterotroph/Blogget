@@ -4,7 +4,7 @@ import { Table, Sticky } from "semantic-ui-react";
 const TableHeader = props => (
   <div style={{ minHeight: 50 }}>
     <Sticky context={props.context} style={{ width: "100%" }}>
-      <Table basic="very" fixed selectable sortable>
+      <Table basic="very" fixed unstackable selectable sortable>
         <Table.Header className="table-header">
           <Table.Row>
             <Table.HeaderCell singleLine width={props.accSize}/>
